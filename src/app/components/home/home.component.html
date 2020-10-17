@@ -1,0 +1,138 @@
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link"
+           [class.active]="activeTab==='aboutMe'"
+           href="#"
+           (click)="activeTab='aboutMe'">About Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [class.active]="activeTab==='education'"
+           href="#"
+           (click)="activeTab='education'">Education</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [class.active]="activeTab==='workExperience'"
+           href="#"
+           (click)="activeTab='workExperience'">Work Experience</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [class.active]="activeTab==='courses'"
+           href="#"
+           (click)="activeTab='courses'">Courses</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body ">
+    <div id="aboutMe" *ngIf="activeTab==='aboutMe'" class="container text-md-left text-center border rounded p-2">
+      <div class="row">
+        <div class="col-md-auto">
+          <img src="/assets/images/profil_pic.jpg"
+               class="img-thumbnail rounded-circle img-responsive center-block"
+               alt="Gonzalo Piérola Azanza"
+               style="max-width: 250px">
+        </div>
+        <div class="col-md-9 align-self-center">
+          <h3 class="card-title ml-0">Gonzalo Piérola Azanza</h3>
+          <h5 class="card-subtitle mb-2 text-muted ml-1">Computer Engineer</h5>
+          <p class="card-text ml-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at, aut dolorem
+            eius eligendi ipsam ipsum quas repudiandae veritatis. Asperiores consequatur earum facilis quae unde. Amet
+            beatae dignissimos ipsam iste officiis repudiandae suscipit. Dolores error facilis mollitia officiis qui
+            sed. Accusantium aut delectus dicta dolorum neque porro quisquam sapiente similique.</p>
+        </div>
+      </div>
+      <div class="ml-2 mt-4">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="card-text">Contact</h5>
+            <ul class="list-unstyled list-group pl-1">
+              <li><i class="fa fa-envelope"></i> Email: gonzalopierola@gmail.com</li>
+              <li><i class="fa fa-phone"></i> Phone: 608 69 67 80</li>
+              <li><a href="https://github.com/Guamedo"><i class="fa fa-github"></i> GitHub</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="container pr-md-5 text-sm-center text-md-right mt-sm-2">
+              <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"><img src="/assets/images/patito.jpg"
+                   class="img-thumbnail rounded-circle img-responsive"
+                   alt="Gonzalo Piérola Azanza"
+                   style="max-width: 100px"></a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="education" *ngIf="activeTab==='education'" class="container">
+      <ul class="list-group">
+        <li *ngFor="let education of educationList" class="list-group-item">
+          <div class="card">
+            <div class="card-header">
+              <h3>{{education.title}}</h3>
+              <h5 class="text-muted">{{education.university}} | {{education.startDate}} - {{education.endDate}}</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li *ngFor="let desc of education.description">
+                  - {{desc}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="workExperience" *ngIf="activeTab==='workExperience'" class="container">
+      <ul class="list-group">
+        <li *ngFor="let work of workList" class="list-group-item">
+          <div class="card">
+            <div class="card-header">
+              <h3>{{work.post}}</h3>
+              <h5 class="text-muted">{{work.centre}} | {{work.startDate}} - {{work.endDate}}</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li *ngFor="let act of work.activity">
+                  - {{act}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div id="courses" *ngIf="activeTab==='courses'" class="container">
+      <ul class="list-group">
+        <li *ngFor="let course of coursesList" class="list-group-item">
+          <div class="card">
+            <div class="card-header">
+              <h3>{{course.title}}</h3>
+              <h5 class="text-muted">{{course.place}}</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li class="mb-1">
+                  - {{course.description}}
+                </li>
+                <li>
+                  - Technologies:
+                  <ul style="list-style-type:disc">
+                    <li *ngFor="let tech of course.technologies">
+                      {{tech}}
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
